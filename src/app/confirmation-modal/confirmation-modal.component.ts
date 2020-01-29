@@ -12,7 +12,7 @@ export class ConfirmationModalComponent implements OnInit {
   ngOnInit() {
   }
   yes(){
-    this.modalInstance.close("yes");
+    this.modalInstance.close(this.modalInstance);
  }
 
 }

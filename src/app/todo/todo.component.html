@@ -1,6 +1,18 @@
 <div class="view">
-    <label>{{todo.title}}</label>
+    <label *ngIf="!isEditing" (dblclick)="isEditing = true">{{todo.title}}</label>
+    <input (blur)="isEditing = false" *ngIf="isEditing" [(ngModel)]="todo.title" /> 
+    <br />
+    <label style="text-decoration: line-through;">{{todo.description}}</label>
+    <br />
+    <select [(ngModel)]="todo.status" name="status">
+      <option value='Todo'>Todo</option>
+      <option value='Doing'>Doing</option>
+      <option value='Done'>Done</option>
+    </select>
+    
     <div class="float-right">
-        <button type="button" (click)= deleteTodo(todo) class="btn btn-danger btn-sm">Delete</button>
+      <button type="button" (click)="deleteTodo(todo)" class="btn btn-danger btn-sm"> Delete </button>
+      
+      <button type="button" (click)= "editTodo(todo)" class="btn btn-info btn-sm">Edit</button>
     </div>
-</div>
+  </div>
